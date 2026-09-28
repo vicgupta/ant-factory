@@ -11,7 +11,7 @@ A skill that builds a software factory: label a GitHub issue with `ready`, a cod
 
 ## Use
 
-Copy this folder into your agent's skills directory (e.g. `.opencode/skills/create-ant-factory`) or point your agent at this repo. The skill tells the agent to adapt the template instead of inventing a pipeline, to work stage by stage, and to keep notes under `docs/` in the factory repo.
+Copy this folder into your agent's skills directory (e.g. `<skills-dir>/create-ant-factory`) or point your agent at this repo. The skill tells the agent to adapt the template instead of inventing a pipeline, to work stage by stage, and to keep notes under `docs/` in the factory repo.
 
 Requires on the user's machine: Node 20.6+, git, GitHub CLI `gh` with `repo` + `workflow` scopes.
 
@@ -21,7 +21,7 @@ See `.env.example`. The user creates each one and puts values in a local `.env` 
 
 1. `UPSTASH_BOX_API_KEY` — Upstash console, Box section.
 2. `FACTORY_GITHUB_TOKEN` — fine-grained token covering the factory repo and every app repo (Contents, Pull requests, Issues: read + write).
-3. `CLAUDE_CODE_OAUTH_TOKEN` — from `claude setup-token` (subscription) or `ANTHROPIC_API_KEY`. Other agents (Codex, OpenCode) use their own secret per `references/agents.md`.
+3. `CLAUDE_CODE_OAUTH_TOKEN` — from `claude setup-token` (subscription) or `ANTHROPIC_API_KEY`. Other agents (e.g. Codex) use their own secret per `references/agents.md`.
 
 `node --env-file=.env scripts/check-setup.mjs` verifies setup without printing values.
 

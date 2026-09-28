@@ -40,7 +40,7 @@ add_skill() {
 # PROFILE
 
 # --- Another agent CLI (example) ---------------------------------------------
-# sudo npm install --global --silent opencode-ai
+# sudo npm install --global --silent <agent-cli-package>
 
 # --- Check ---------------------------------------------------------------------
 # The build log is the only evidence of what is in the image, and the build

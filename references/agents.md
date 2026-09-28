@@ -137,20 +137,20 @@ Work through these with the user, then prove it with the smoke test.
 5. **Where are its user-level files?** Settings for `boxSettings`, house rules for `jobFiles`, MCP registration. They do not have to be under `/workspace/home`. Writing files anywhere `boxuser` may write works, and snapshots keep the whole disk.
 6. **Does it update itself or upload anything?** Switch off self-update, so the image stays the version that was tested, and switch off session sharing or telemetry that uploads conversations.
 
-A sketch for OpenCode with OpenRouter. It loads, but none of it was run, so check every name against OpenCode's docs and let the smoke test judge:
+A sketch for a generic third CLI agent. It loads, but none of it was run, so check every name against that CLI's docs and let the smoke test judge:
 
 ```json
-"opencode": {
-  "auth": [{ "secret": "OPENROUTER_API_KEY", "env": "OPENROUTER_API_KEY" }],
+"myagent": {
+  "auth": [{ "secret": "MY_AGENT_API_KEY", "env": "MY_AGENT_API_KEY" }],
   "boxSettings": [
-    { "path": "/home/boxuser/.config/opencode/opencode.json", "format": "json", "values": { "model": "openrouter/PROVIDER/MODEL", "autoupdate": false, "share": "disabled" } }
+    { "path": "/home/boxuser/.config/myagent/config.json", "format": "json", "values": { "model": "PROVIDER/MODEL", "autoupdate": false, "share": "disabled" } }
   ],
   "promptExtra": "When you are done, write your summary to the file {summary}, and nothing else to that file.",
-  "command": "opencode run \"$(cat {prompt})\""
+  "command": "myagent run \"$(cat {prompt})\""
 }
 ```
 
-The CLI is not in the stock Box, so it goes into the image (`sudo npm install --global opencode-ai`, if it ships an ARM64 Linux build), and the image comes before this agent type's smoke test. Its permission settings must allow edits, shell commands and writing the summary file without asking, because nobody can answer a prompt in a Box.
+The CLI is not in the stock Box, so it goes into the image (`sudo npm install --global my-agent-cli`, if it ships an ARM64 Linux build), and the image comes before this agent type's smoke test. Its permission settings must allow edits, shell commands and writing the summary file without asking, because nobody can answer a prompt in a Box.
 
 ## Things to tell the user about cost and limits
 
